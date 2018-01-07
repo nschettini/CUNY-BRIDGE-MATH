@@ -1,0 +1,149 @@
+####Question 1: 
+$(\frac {64x*y^{-2}}{x^{-2}*y})^{^-1/2}$
+
+$(\frac {64x^{^-3}}{y^3})^{^-1/2}$
+
+$(\frac {y^{-3}}{64x^{^3}})$
+
+####Question 2:
+
+$f(x) = \sqrt x+5$
+
+$g(x) = \frac{3}{x}$
+
+$f(x)*g(x) = \frac{3}{x} \sqrt x+5$
+
+
+####Question 3:
+$R(x) 	=	24.2x - 0.2x^2$
+
+$C(x) 	=	13x + 14$
+
+$breakeven condition: r(x) = c(x)$
+
+$24.2x -0.2x^2 = 13x + 147$
+
+$0.2x^2 - 11.2 x + 147 = 0$
+
+$x ~ 21, 35$
+
+```{r}
+library(rootSolve)
+par(mfrow=c(1,1))
+fx <- function(x){-0.2*x^2+11.2*x-147}
+s <- seq(0,50,by=1)
+a <- fx(s)
+roots <- uniroot.all(fx, c(0,100))
+plot(a~s,type='l')
+points(roots, rep(0,length(roots)), col='blue',pch=15)
+```
+
+####Question 4:
+```{r Q4}
+myf1=function(x)9*x**8.2
+Deriv(myf1)
+```
+
+####Question 5:
+```{r Q5}
+myf1=function(x)-4*x**5 - 3*x**4 - 4*x**3 - 3
+Deriv(myf1)
+```
+
+####Question 6:
+```{r Q6}
+myf1=function(t)(4264^2-(2*t)^2)^(1/2)
+myf1 <- Deriv(myf1)
+myf1
+```
+
+####Question 7:
+```{r Q7}
+myf1=function(x)(3*x^8-x^5)/(-2*x^8+2)
+Deriv(myf1)
+```
+
+####Question 8:
+```{r Q8}
+library(rootSolve)
+par(mfrow=c(2,2)) 
+fx=function(x){4*x+25*x^-1}
+s=seq(-10,10,by=.1)
+a=fx(s)
+plot(a~s,type="l")
+
+dfx = Deriv(fx)
+s=seq(-10,10,by=.1)
+b=dfx(s)
+plot(b~s)
+a=uniroot.all(dfx, c(-5,5))
+points(a, rep(0, length(a)), col='blue', pch=21)
+
+```
+
+####Question 9:
+```{r Q9}
+myf1=function(x)-9*(-3*x^3+3*x+6)^7+7*(-3*x^3+3*x+6)+ 4
+Deriv(myf1)(x=1)
+```
+
+####Question 10:
+```{r Q10}
+myf1=function(x)(x+5)*(x+4)^2
+myf2 <- Deriv(myf1)
+dx2 <- Deriv(myf2)
+myf2
+```
+
+####Question 11:
+```{r Q11a}
+myf1=function(x) -7*x^2-84*x-140
+dmyf1 <- Deriv(myf1)
+dmyf2 <- Deriv(dmyf1)
+dmyf2
+```
+
+####Question 12:
+```{r 12}
+myf1=function(x) 0.6*x+1500/x
+```
+
+####Question 13:
+```{r Q13}
+myf1=function(x)18*x/log(x^4)
+Deriv(myf1)
+```
+
+####Question 14:
+```{r Q14}
+myf1=function(x)-5*x^3*exp(x)
+myf2 <- Deriv(myf1)
+myf2
+
+myf3 <- Deriv(myf2)
+myf3
+```
+
+####Question 15:
+```{r Q15}
+myf1=function(x)8*((8*x+5)^2)^(1/3)
+integrate(Vectorize(myf1), -3, 1)
+```
+
+####Question 17:
+```{r Q17}
+myf1=function(x) 298/(sqrt(x))
+integrate(Vectorize(myf1), 137, 232)
+```
+
+####Question 18:
+```{r Q18}
+myf1=function(x)(4*x-3)^(1/2)
+a <- Deriv(myf1)
+b <- Deriv(a)
+c <- Deriv(b)
+d <- Deriv(c)
+e <- Deriv(d)
+a(1)
+b(1)/prod(1:2)
+c(1)/prod(1:3)
